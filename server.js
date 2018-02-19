@@ -71,7 +71,7 @@ app.get('/', function (req, res) {
 });
 
 app.get('/:pagename', function(req, res) {
- var pagename=res.params.pagename;
+ var pagename=req.params.pagename;
  res.send(createtemp(pages[pagename]));
 });
 /*
