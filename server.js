@@ -47,7 +47,7 @@ var htmltemp=`
         
     </div> 
     <div class="center bold">
-    <a href="/">Home</a>
+    <a href="/">Homehii</a>
     </div>
         <script type="text/javascript" src="/ui/main.js">
         </script>
