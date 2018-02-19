@@ -5,11 +5,18 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
-var project={
+var pages={
+ 'projects':{
     title: 'projects | bhargav sai',
     heading: 'projects',
     content: `<p class="bold center">-Text Steganography on differently spelt words.<p>
             <p class="bold center">-Total Gene & protien count in Large user data.</p>`
+},
+'about':{
+    title: 'about | bhargav sai',
+    heading: 'About Me',
+    content: `   <p class="bold center">I am student who is pursuing b.tech and eagar learner and noob.<p>`
+}
 };
 
 function createtemp(data){
@@ -58,20 +65,27 @@ var htmltemp=`
 return htmltemp;
 
 }
+
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
+
+app.get('/:pagename', function(req, res) {
+ var pagename=res.params.pagename;
+ res.send(createtemp(pages[pagename]));
+});
+/*
 app.get('/projects', function(req, res) {
  // res.sendFile(path.join(__dirname, 'ui', 'project.html'));
- res.send(createtemp(project));
+// res.send(createtemp(project));
 });
 app.get('/about', function(req, res) {
-     res.sendFile(path.join(__dirname, 'ui', 'about.html'));
+    // res.sendFile(path.join(__dirname, 'ui', 'about.html'));
 });
 app.get('/test3', function(req, res) {
     res.send("Tested and working");
 });
-
+*/
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
 });
